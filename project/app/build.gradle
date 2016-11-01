@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+
+    lintOptions {
+        checkReleaseBuilds true
+        abortOnError false
+    }
+
+    defaultConfig {
+        applicationId "com.enrico.earthquake"
+        minSdkVersion 9
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.afollestad.material-dialogs:commons:0.9.0.2'
+}

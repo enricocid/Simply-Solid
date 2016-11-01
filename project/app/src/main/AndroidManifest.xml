@@ -1,0 +1,50 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.enrico.earthquake">
+
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme_iven"
+        tools:replace="android:allowBackup, android:icon">
+
+        <uses-library
+            android:name="com.sec.android.app.multiwindow"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.sec.android.support.multiwindow"
+            android:value="true" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W"
+            android:value="632.0dip" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H"
+            android:value="598.0dip" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W"
+            android:value="632.0dip" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H"
+            android:value="598.0dip" />
+
+        <activity
+            android:name="com.enrico.earthquake.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_iven">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
+                <action android:name="android.intent.action.SET_WALLPAPER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
