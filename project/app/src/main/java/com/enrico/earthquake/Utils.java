@@ -50,7 +50,7 @@ class Utils {
 
         textView.setText(hexColor);
 
-        textView.setTextColor(Utils.getComplementaryColor(color));
+        textView.setTextColor(getComplementaryColor(color));
 
     }
 
