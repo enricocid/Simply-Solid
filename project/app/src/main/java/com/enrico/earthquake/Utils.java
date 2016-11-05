@@ -37,11 +37,7 @@ class Utils {
             e.printStackTrace();
         }
 
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            activity.finishAndRemoveTask();
-        } else {
-            activity.finish();
-        }
+        activity.recreate();
     }
 
     static void getColorValues(TextView textView, int color) {
