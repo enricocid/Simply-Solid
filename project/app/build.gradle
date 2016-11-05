@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.enrico.earthquake"
-        minSdkVersion 11
+        minSdkVersion 13
         targetSdkVersion 25
         versionCode 2
         versionName "1.0.1"
@@ -33,5 +33,5 @@ repositories {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
-    compile 'com.afollestad.material-dialogs:commons:0.9.0.2'
+    compile 'com.afollestad.material-dialogs:commons:0.9.1.0'
 }
