@@ -15,12 +15,20 @@ The app supports 3.0+ devices.
 You can download the latest (1.0.2) signed APK from this repo here: https://github.com/enricocid/Simply-Solid/raw/master/project/app/app-release.apk
 
 
-It's also on Google Play:
+The app is available on:
 
-<a href="https://play.google.com/store/apps/details?id=com.enrico.earthquake" target="_blank">
-  <img alt="Get it on Google Play"
-       src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height="60"/>
+Google Play Store
+
+<a href="https://play.google.com/store/apps/details?id=com.enrico.earthquake">
+  <img alt="Get it on Google Play"       src="https://raw.githubusercontent.com/enricocid/Stores_badges/master/gplay.png" />
 </a>
+ 
+F-Droid
+ 
+<a href="https://f-droid.org/repository/browse/?fdid=com.enrico.earthquake">
+  <img alt="Get it on F-Droid"       src="https://raw.githubusercontent.com/enricocid/Stores_badges/master/fdroid.png" />
+</a>
+
 
 
 
