@@ -3,11 +3,12 @@ package com.enrico.earthquake;
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -115,22 +116,32 @@ class Utils {
         return true;
     }
 
-    //clear sqlite database
-    private static void clearDatabase(SQLiteDatabase mydb, String TABLE_NAME) {
+    //save one color to shared preferences
+    static void sendColor(Activity activity, Integer color) {
 
-        String clearDBQuery = "DELETE FROM " + TABLE_NAME;
-        mydb.execSQL(clearDBQuery);
+        SharedPreferences prefs;
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+
+        prefs.edit()
+                .clear()
+                .apply();
+
+        prefs.edit()
+                .putString("color", Integer.toString(color))
+                .apply();
     }
 
-    //save the new color to the sqlite db
-    static void saveOneColor(SQLiteDatabase mydb, int savedcolor) {
+    //method to retrive the saved color
+    static int retrieveColor(Context context, Activity activity) {
 
-        clearDatabase(mydb, "color");
+        SharedPreferences prefs;
 
-        String strI = Integer.toString(savedcolor);
+        prefs = PreferenceManager.getDefaultSharedPreferences(activity);
 
-        mydb.execSQL("insert into color (thacolor) values(?);", new String[]{strI});
+        String value = prefs.getString("color", Integer.toString(ContextCompat.getColor(context, R.color.colorPrimary)));
 
+        return Integer.parseInt(value);
     }
 
     //show about dialog

@@ -1,8 +1,6 @@
 package com.enrico.earthquake;
 
 import android.app.WallpaperManager;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,12 +24,6 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
     //android's Wallpaper Manager
     WallpaperManager myWallpaperManager;
 
-    //sqLite db
-    SQLiteDatabase mydb;
-
-    //saved color
-    String dbColor;
-
     //dynamic TextView
     TextView DynamicText;
 
@@ -40,6 +32,10 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
 
     //zoom in animation
     Animation zoomIn;
+
+    //toolbar
+
+    Toolbar toolbar;
 
     //create the toolbar's menu
     @Override
@@ -62,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
         setContentView(R.layout.home);
 
         //initialize the toolbar
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         //set the toolbar
         setSupportActionBar(toolbar);
@@ -78,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                         //share button using share intent
                         switch (mItemId) {
 
-                            //rate button
+                            //about button
                             case R.id.about:
 
                                 //show about dialog
@@ -90,11 +86,6 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                         return false;
                     }
                 });
-
-        //open or create a sqlite db
-        mydb = this.openOrCreateDatabase("oneColor", MODE_PRIVATE, null);
-
-        mydb.execSQL("CREATE TABLE IF NOT EXISTS color (id INTEGER PRIMARY KEY AUTOINCREMENT,thacolor varchar);");
 
         //set click to the view
         View myview = findViewById(R.id.activity_main);
@@ -148,30 +139,11 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
     //change colors on app resume
     private void updateColorOnResume() {
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setColor(Utils.retrieveColor(getBaseContext(), this));
 
-        final Cursor cursor2 = mydb.rawQuery("SELECT * FROM color;", null);
+        Utils.getColorValues(DynamicText, Utils.retrieveColor(getBaseContext(), this));
 
-        if (cursor2 != null && cursor2.moveToFirst()) {
-
-            while (!cursor2.isAfterLast()) {
-
-                dbColor = cursor2.getString(cursor2.getColumnIndex("thacolor"));
-
-                Integer color = Integer.valueOf(dbColor);
-
-                DynamicText = (TextView) findViewById(R.id.textview);
-
-                Utils.getColorValues(DynamicText, color);
-
-                setColor(color);
-
-                Utils.isColorDark(toolbar, this, getBaseContext(), color);
-
-                cursor2.moveToNext();
-            }
-            cursor2.close();
-        }
+        Utils.isColorDark(toolbar, this, getBaseContext(), Utils.retrieveColor(getBaseContext(), this));
     }
 
     //do shit on color selected
@@ -180,11 +152,11 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
 
         myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
 
-        Utils.saveOneColor(mydb, color);
-
         setColor(color);
 
         Utils.setWallpaper(this, myWallpaperManager, color);
+
+        Utils.sendColor(MainActivity.this, color);
 
     }
 
