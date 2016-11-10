@@ -99,13 +99,19 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
             }
         });
 
-        //set the animation on TextView
-        zoomIn = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.zoom_in);
-
         DynamicText = (TextView) findViewById(R.id.textview);
 
-        DynamicText.setAnimation(zoomIn);
+        DynamicText.post(new Runnable() {
+            @Override
+            public void run() {
+                //set the animation on TextView
+                zoomIn = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.zoom_in);
+
+                DynamicText.setAnimation(zoomIn);
+            }
+        });
+
     }
 
     //open material color picker
@@ -123,16 +129,24 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
     }
 
     //change view colors
-    private void setColor(int color) {
+    private void setColor(final int color) {
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(CircleView.shiftColorDown(color));
-            getWindow().setNavigationBarColor(color);
-            getWindow().setBackgroundDrawable(new ColorDrawable(color));
-        }
+        MainActivity.this.runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+
+
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    getWindow().setStatusBarColor(CircleView.shiftColorDown(color));
+                    getWindow().setNavigationBarColor(color);
+                    getWindow().setBackgroundDrawable(new ColorDrawable(color));
+                }
+            }
+        });
 
     }
 
