@@ -32,6 +32,9 @@ F-Droid
 </a>
 
 
+**For more material colors please have a look here:**
+
+https://www.materialpalette.com/
 
 
 -------------
