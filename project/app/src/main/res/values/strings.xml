@@ -7,7 +7,7 @@
     <string name="colors">Colors</string>
     <string name="color_palette">Color Palette</string>
     <string name="hello_message">Choose a color!</string>
-    <string name="about" translatable="false">About</string>
+    <string name="about">About</string>
     <string name="dismiss">Perfect!</string>
     <string name="about_body"><![CDATA[
         simply solid, an app  designed by <b>Enrico D\'Ortenzio</b>.<br/>

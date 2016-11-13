@@ -14,7 +14,7 @@ The app supports 3.0+ devices.
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/screens.png)
 
 
-You can download the latest (1.0.4) signed APK from this repo here: https://github.com/enricocid/Simply-Solid/raw/master/project/app/app-release.apk
+You can download the latest (1.0.5) signed APK from this repo here: https://github.com/enricocid/Simply-Solid/raw/master/project/app/app-release.apk
 
 
 The app is available on:
@@ -45,6 +45,13 @@ https://www.materialpalette.com/
 
 Git page:
 https://github.com/ivn888
+
+
+**- techwebpd for Lithuanian translation**
+@techwebpd
+
+Git page:
+https://github.com/techwebpd
 
 
 **- material-dialogs commons by Aidan Follestad**

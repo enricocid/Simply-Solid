@@ -7,7 +7,7 @@
     <string name="colors">Spalvos</string>
     <string name="color_palette">Spalvų paletė</string>
     <string name="hello_message">Pasirinkite spalvą!</string>
-    <string name="about" translatable="false">Apie</string>
+    <string name="about">Apie</string>
     <string name="dismiss">Nuostabu!</string>
     <string name="about_body"><![CDATA[
         simply solid, programėlė sukurta <b>Enrico D\'Ortenzio</b>.<br/>
