@@ -13,8 +13,8 @@ android {
         applicationId "com.enrico.earthquake"
         minSdkVersion 13
         targetSdkVersion 25
-        versionCode 6
-        versionName "1.0.5"
+        versionCode 7
+        versionName "1.0.6"
     }
 
     buildTypes {
@@ -32,6 +32,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.afollestad.material-dialogs:commons:0.9.1.0'
 }
