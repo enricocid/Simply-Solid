@@ -14,4 +14,9 @@
         <a href=\'https://plus.google.com/u/0/+EnricoDortenzio/posts\'>Google+</a>&nbsp;&nbsp;
         <a href=\'https://github.com/enricocid\'>GitHub</a>
         ]]></string>
+    <string name="md_done_label">Done</string>
+    <string name="md_cancel_label">Cancel</string>
+    <string name="saved">&#160;saved successfully!</string>
+    <string name="hint">touch to change the color :)</string>
+
 </resources>

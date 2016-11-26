@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -41,13 +43,22 @@ class Utils {
         activity.recreate();
     }
 
-    static void getColorValues(TextView textView, int color) {
+    //convert color to hex string
+    static String getColorValues(int color) {
 
-        String hexColor = String.format("#%06X", (0xFFFFFF & color));
+        return String.format("#%06X", (0xFFFFFF & color));
 
-        textView.setText(hexColor);
+    }
 
-        textView.setTextColor(getComplementaryColor(color));
+    //apply color to home text views
+    static void applyTextColor(TextView title, TextView hint, int color) {
+
+        title.setText(getColorValues(color));
+        title.setTextColor(getComplementaryColor(color));
+
+        int opaqueColor = (getComplementaryColor(color) & 0x00FFFFFF) | 0x80000000;
+
+        hint.setTextColor(opaqueColor);
 
     }
 
@@ -85,6 +96,18 @@ class Utils {
 
     }
 
+    //method to change the fab color
+    private static void changeFabColor(final FloatingActionButton fab, final int color) {
+
+        fab.post(new Runnable() {
+
+            @Override
+            public void run() {
+                fab.setBackgroundTintList(ColorStateList.valueOf(color));
+            }
+        });
+    }
+
     //method to change the toolbar's overflow icon
     private static void changeOverflowIcon(final Toolbar toolbar, final Drawable icon) {
 
@@ -93,6 +116,18 @@ class Utils {
             @Override
             public void run() {
                 toolbar.setOverflowIcon(icon);
+            }
+        });
+    }
+
+    //method to change the toolbar's navigation icon
+    private static void changeNavigationIcon(final Toolbar toolbar, final Drawable icon) {
+
+        toolbar.post(new Runnable() {
+
+            @Override
+            public void run() {
+                toolbar.setNavigationIcon(icon);
             }
         });
     }
@@ -107,7 +142,7 @@ class Utils {
     }
 
     //determine if solid color is light or dark to apply proper colors to toolbar and statusbar
-    static boolean isColorDark(final Toolbar toolbar, final Activity activity, final Context context, final int color) {
+    static boolean isColorDark(final Toolbar toolbar, final FloatingActionButton fab, final Activity activity, final Context context, final int color) {
         double darkness = 1 - (0.299 * Color.red(color) + 0.587 * Color.green(color) + 0.114 * Color.blue(color)) / 255;
 
         if (darkness < 0.5) {
@@ -118,9 +153,15 @@ class Utils {
                 public void run() {
                     applyLightIcons(activity);
 
+                    //change toolbar shit
+                    changeOverflowIcon(toolbar, ContextCompat.getDrawable(activity, R.drawable.ic_dots_dark));
+                    changeNavigationIcon(toolbar, ContextCompat.getDrawable(activity, R.drawable.ic_close));
                     changeTitleColor(toolbar, ContextCompat.getColor(context, android.R.color.secondary_text_light));
 
-                    changeOverflowIcon(toolbar, ContextCompat.getDrawable(activity, R.drawable.ic_dots_dark));
+                    //change fab color
+                    changeFabColor(fab, Color.BLACK);
+                    fab.setColorFilter(Color.WHITE);
+
                 }
             });
 
@@ -130,9 +171,16 @@ class Utils {
 
                 @Override
                 public void run() {
+
+                    //change toolbar shit
+                    changeOverflowIcon(toolbar, ContextCompat.getDrawable(activity, R.drawable.ic_dots));
+                    changeNavigationIcon(toolbar, ContextCompat.getDrawable(activity, R.drawable.ic_close_dark));
                     changeTitleColor(toolbar, ContextCompat.getColor(context, android.R.color.white));
 
-                    changeOverflowIcon(toolbar, ContextCompat.getDrawable(activity, R.drawable.ic_dots));
+                    //change fab color
+                    changeFabColor(fab, Color.WHITE);
+                    fab.setColorFilter(Color.BLACK);
+
                 }
             });
         }

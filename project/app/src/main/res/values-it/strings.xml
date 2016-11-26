@@ -16,5 +16,7 @@
         ]]></string>
     <string name="md_done_label">Fatto</string>
     <string name="md_cancel_label">Cancella</string>
+    <string name="saved">&#160;salvato con successo!</string>
+    <string name="hint">tocca per cambiare il colore :)</string>
 
 </resources>

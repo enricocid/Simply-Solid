@@ -2,16 +2,20 @@
  -Simple app to apply solid wallpapers
 
 
-![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/solid.png)
-
-![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/Simply_gif.gif)
+![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/solid2.png)![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/round.png)
 
 Simply Solid is a super simple app to apply solid colors as wallpapers.
-It has a color chooser dialog where user can choose color from presets or from custom hex code and a simple animated TextView showing the actual applied solid wallpaper's color. The color of the TextView is the complementary color of the applied color.
-There's is also a function to determine if the applied color is light or not used to change the toolbar/status bar color to dark or light
+
+Features:
+
+- Simple UI;
+- Material color chooser dialog;
+- Save colors to storage;
+- Round icon support for android 7.1;
+
 The app supports 3.0+ devices.
 
-![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/screens.png)
+![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/screens2.png)
 
 
 You can download the latest (1.0.6) signed APK from this repo here: https://github.com/enricocid/Simply-Solid/raw/master/project/app/app-release.apk

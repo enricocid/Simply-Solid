@@ -33,5 +33,6 @@ repositories {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
     compile 'com.afollestad.material-dialogs:commons:0.9.1.0'
 }
