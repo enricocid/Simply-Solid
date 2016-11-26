@@ -13,8 +13,8 @@ android {
         applicationId "com.enrico.earthquake"
         minSdkVersion 13
         targetSdkVersion 25
-        versionCode 7
-        versionName "1.0.6"
+        versionCode 8
+        versionName "2.0"
     }
 
     buildTypes {
