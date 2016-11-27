@@ -50,6 +50,11 @@ https://www.materialpalette.com/
 Git page:
 https://github.com/ivn888
 
+**- Responsive toolbar by Lucas Urbas**
+@lurbas
+
+Page:
+https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129
 
 **- techwebpd for Lithuanian translation**
 @techwebpd
