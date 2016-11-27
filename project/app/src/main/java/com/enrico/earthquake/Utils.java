@@ -41,6 +41,7 @@ class Utils {
         }
 
         activity.recreate();
+
     }
 
     //convert color to hex string
@@ -104,6 +105,7 @@ class Utils {
             @Override
             public void run() {
                 fab.setBackgroundTintList(ColorStateList.valueOf(color));
+                fab.setColorFilter(getComplementaryColor(color));
             }
         });
     }
@@ -160,8 +162,6 @@ class Utils {
 
                     //change fab color
                     changeFabColor(fab, Color.BLACK);
-                    fab.setColorFilter(Color.WHITE);
-
                 }
             });
 
@@ -179,8 +179,6 @@ class Utils {
 
                     //change fab color
                     changeFabColor(fab, Color.WHITE);
-                    fab.setColorFilter(Color.BLACK);
-
                 }
             });
         }
