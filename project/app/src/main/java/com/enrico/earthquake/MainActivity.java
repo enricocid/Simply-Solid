@@ -11,11 +11,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -27,8 +26,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.color.CircleView;
-import com.afollestad.materialdialogs.color.ColorChooserDialog;
+import com.enrico.colorpicker.colorDialog;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -36,7 +34,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-public class MainActivity extends AppCompatActivity implements ColorChooserDialog.ColorCallback {
+public class MainActivity extends AppCompatActivity implements colorDialog.ColorSelectedListener {
 
     private static final int REQUEST_CODE = 1;
 
@@ -53,8 +51,7 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
     //menu items
     Menu menu;
 
-    //zoom in animation
-    Animation zoomIn;
+    //blink animation
     Animation blink;
 
     //toolbar
@@ -109,7 +106,8 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                             case R.id.about:
 
                                 //show about dialog
-                                Utils.showAbout(MainActivity.this);
+                                Intent aboutActivity = new Intent(MainActivity.this, AboutActivity.class);
+                                startActivity(aboutActivity);
 
                                 break;
                         }
@@ -121,16 +119,6 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
         //fab button
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
-        //request permission to save pngs to storage on MM
-        if (Build.VERSION.SDK_INT >= 23) {
-
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
-
-            }
-        }
-
         //on click retrieve the color and save as png
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +126,17 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
 
                 try {
 
-                    colortosave = Utils.retrieveColor(getBaseContext(), MainActivity.this);
+                    //request permission to save pngs to storage on MM
+                    if (Build.VERSION.SDK_INT >= 23) {
+
+                        if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
+
+                        }
+                    }
+
+                    colortosave = colorDialog.getPickerColor(MainActivity.this, 1);
 
                     //retrieve display dimensions
                     int dheight;
@@ -187,17 +185,6 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
 
         DynamicText = (TextView) findViewById(R.id.title);
 
-        DynamicText.post(new Runnable() {
-            @Override
-            public void run() {
-                //set the animation on TextView
-                zoomIn = AnimationUtils.loadAnimation(getApplicationContext(),
-                        R.anim.zoom_in);
-
-                DynamicText.setAnimation(zoomIn);
-            }
-        });
-
         Hint = (TextView) findViewById(R.id.hint);
 
         Hint.post(new Runnable() {
@@ -215,15 +202,8 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
     //open material color picker
     private void openColorChooser() {
 
-        new ColorChooserDialog.Builder(this, R.string.color_palette)
-                .allowUserColorInputAlpha(false)
-                .titleSub(R.string.colors)
-                .accentMode(true)
-                .doneButton(R.string.md_done_label)
-                .cancelButton(R.string.md_cancel_label)
-                .backButton(R.string.md_back_label)
-                .dynamicButtonColor(true)
-                .show();
+        colorDialog.showColorPicker(MainActivity.this, 1);
+
     }
 
     //change view colors
@@ -239,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                     getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    getWindow().setStatusBarColor(CircleView.shiftColorDown(color));
+                    getWindow().setStatusBarColor(colorDialog.shiftColor(color, 0.9f));
                     getWindow().setNavigationBarColor(color);
                     getWindow().setBackgroundDrawable(new ColorDrawable(color));
                 }
@@ -300,24 +280,23 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
     //change colors on app resume
     private void updateColorOnResume() {
 
-        setColor(Utils.retrieveColor(getBaseContext(), this));
+        setColor(colorDialog.getPickerColor(MainActivity.this, 1));
 
-        Utils.applyTextColor(DynamicText, Hint, Utils.retrieveColor(getBaseContext(), this));
+        Utils.applyTextColor(DynamicText, Hint, colorDialog.getPickerColor(MainActivity.this, 1));
 
-        Utils.isColorDark(toolbar, fab, this, getBaseContext(), Utils.retrieveColor(getBaseContext(), this));
+        Utils.isColorDark(toolbar, fab, this, getBaseContext(), colorDialog.getPickerColor(MainActivity.this, 1));
     }
 
     //do shit on color selected
     @Override
-    public void onColorSelection(@NonNull ColorChooserDialog dialog, @ColorInt int color) {
-
+    public void onColorSelection(DialogFragment dialogFragment, int color) {
         myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
 
         setColor(color);
 
         Utils.setWallpaper(this, myWallpaperManager, color);
 
-        Utils.sendColor(MainActivity.this, color);
+        colorDialog.setPickerColor(MainActivity.this, 1, color);
 
     }
 

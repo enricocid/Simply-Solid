@@ -49,6 +49,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/about"></activity>
+
     </application>
 
 </manifest>

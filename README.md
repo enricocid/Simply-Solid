@@ -14,12 +14,12 @@ Features:
 - Save colors to storage;
 - Round icon support for android 7.1;
 
-The app supports 3.0+ devices.
+The app supports 4.1+ devices.
 
-![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/screens2.png)
+![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/screens3.png)
 
 
-You can download the latest (2.0.1) signed APK from this repo here: https://github.com/enricocid/Simply-Solid/raw/master/project/app/app-release.apk
+You can download the latest (3.0.0) signed APK from this repo here: https://github.com/enricocid/Simply-Solid/raw/master/project/app/app-release.apk
 
 
 The app is available on:
@@ -62,14 +62,6 @@ https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129
 
 Git page:
 https://github.com/techwebpd
-
-
-**- material-dialogs commons by Aidan Follestad**
-@afollestad
-
-Git page:
-https://github.com/afollestad/material-dialogs
-
 
 
 -------------------

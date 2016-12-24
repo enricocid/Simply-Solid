@@ -6,17 +6,28 @@
     <string name="app_name">Simply Solid</string>
     <string name="colors">Colors</string>
     <string name="color_palette">Color Palette</string>
-    <string name="hello_message">Choose a color!</string>
-    <string name="about">About</string>
+    <string name="about" translatable="false">About</string>
     <string name="dismiss">Perfect!</string>
     <string name="about_body"><![CDATA[
         simply solid, an app  designed by <b>Enrico D\'Ortenzio</b>.<br/>
         <a href=\'https://plus.google.com/u/0/+EnricoDortenzio/posts\'>Google+</a>&nbsp;&nbsp;
         <a href=\'https://github.com/enricocid\'>GitHub</a>
         ]]></string>
-    <string name="md_done_label">Done</string>
-    <string name="md_cancel_label">Cancel</string>
     <string name="saved">&#160;saved successfully!</string>
     <string name="hint">touch to change the color :)</string>
+
+    <!-- About things -->
+    <string name="dev_infos">Developer info</string>
+    <string name="dev_name" translatable="false">\u2022 Enrico D\'Ortenzio</string>
+    <string name="credits">Credits</string>
+    <string name="ivan" translatable="false">\u2022 Ivan D\'Ortenzio</string>
+    <string name="stack" translatable="false">\u2022 stackoverflow</string>
+    <string name="maticons" translatable="false">\u2022 Material design icons</string>
+    <string name="lucas" translatable="false">\u2022 Lucas Urbas</string>
+    <string name="libs">Libraries</string>
+    <string name="appcompat" translatable="false">\u2022 v7 appcompat library</string>
+    <string name="colorpicker" translatable="false">\u2022 color picker library</string>
+    <string name="application_info">Application info</string>
+    <string name="version">Version</string>
 
 </resources>

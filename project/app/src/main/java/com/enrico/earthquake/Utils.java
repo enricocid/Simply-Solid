@@ -3,19 +3,18 @@ package com.enrico.earthquake;
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+
+import com.enrico.colorpicker.colorDialog;
 
 import java.io.IOException;
 
@@ -55,32 +54,12 @@ class Utils {
     static void applyTextColor(TextView title, TextView hint, int color) {
 
         title.setText(getColorValues(color));
-        title.setTextColor(getComplementaryColor(color));
+        title.setTextColor(colorDialog.getComplementaryColor(color));
 
-        int opaqueColor = (getComplementaryColor(color) & 0x00FFFFFF) | 0x80000000;
+        int opaqueColor = (colorDialog.getComplementaryColor(color) & 0x00FFFFFF) | 0x80000000;
 
         hint.setTextColor(opaqueColor);
 
-    }
-
-    //function to invert color value
-    private static int getComplementaryColor(int colorToInvert) {
-
-        float r = Color.red(colorToInvert);
-        float g = Color.green(colorToInvert);
-        float b = Color.blue(colorToInvert);
-
-        float newr = 255 - r;
-        float newg = 255 - g;
-        float newb = 255 - b;
-
-        int red = Math.round(newr);
-
-        int green = Math.round(newg);
-
-        int blue = Math.round(newb);
-
-        return android.graphics.Color.argb(255, red, green, blue);
     }
 
     //method to change the toolbar's title color
@@ -105,7 +84,7 @@ class Utils {
             @Override
             public void run() {
                 fab.setBackgroundTintList(ColorStateList.valueOf(color));
-                fab.setColorFilter(getComplementaryColor(color));
+                fab.setColorFilter(colorDialog.getComplementaryColor(color));
             }
         });
     }
@@ -183,40 +162,5 @@ class Utils {
             });
         }
         return true;
-    }
-
-    //save one color to shared preferences
-    static void sendColor(Activity activity, Integer color) {
-
-        SharedPreferences prefs;
-
-        prefs = PreferenceManager.getDefaultSharedPreferences(activity);
-
-        prefs.edit()
-                .clear()
-                .apply();
-
-        prefs.edit()
-                .putString("color", Integer.toString(color))
-                .apply();
-    }
-
-    //method to retrive the saved color
-    static int retrieveColor(Context context, Activity activity) {
-
-        SharedPreferences prefs;
-
-        prefs = PreferenceManager.getDefaultSharedPreferences(activity);
-
-        String value = prefs.getString("color", Integer.toString(ContextCompat.getColor(context, R.color.colorPrimary)));
-
-        return Integer.parseInt(value);
-    }
-
-    //show about dialog
-    static void showAbout(AppCompatActivity activity) {
-
-        AboutDialog.show(activity);
-
     }
 }
