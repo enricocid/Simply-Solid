@@ -19,7 +19,7 @@ The app supports 4.1+ devices.
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/screens3.png)
 
 
-You can download the latest (3.0.0) signed APK from this repo here: https://github.com/enricocid/Simply-Solid/raw/master/project/app/app-release.apk
+You can download the latest (3.0.1) signed APK from this repo here: https://github.com/enricocid/Simply-Solid/raw/master/project/app/app-release.apk
 
 
 The app is available on:
