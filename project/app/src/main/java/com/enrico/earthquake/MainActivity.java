@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements colorDialog.Color
                     String hexColor = Utils.getColorValues(colortosave);
 
                     //save image method
-                    savebitmap(resizedBitmap, hexColor, view);
+                    savebitmap(resizedBitmap, hexColor);
 
                 } catch (IOException e) {
 
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity implements colorDialog.Color
         return ret;
     }
 
-    public File savebitmap(Bitmap bmp, String color, View view) throws IOException {
+    public File savebitmap(Bitmap bmp, String color) throws IOException {
 
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 
