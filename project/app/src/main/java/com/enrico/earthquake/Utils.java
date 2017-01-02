@@ -3,12 +3,10 @@ package com.enrico.earthquake;
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -76,19 +74,6 @@ class Utils {
 
     }
 
-    //method to change the fab color
-    private static void changeFabColor(final FloatingActionButton fab, final int color) {
-
-        fab.post(new Runnable() {
-
-            @Override
-            public void run() {
-                fab.setBackgroundTintList(ColorStateList.valueOf(color));
-                fab.setColorFilter(colorDialog.getComplementaryColor(color));
-            }
-        });
-    }
-
     //method to change the toolbar's overflow icon
     private static void changeOverflowIcon(final Toolbar toolbar, final Drawable icon) {
 
@@ -123,7 +108,7 @@ class Utils {
     }
 
     //determine if solid color is light or dark to apply proper colors to toolbar and statusbar
-    static boolean isColorDark(final Toolbar toolbar, final FloatingActionButton fab, final Activity activity, final Context context, final int color) {
+    static boolean isColorDark(final Toolbar toolbar, final TextView saveText, final Activity activity, final Context context, final int color) {
         double darkness = 1 - (0.299 * Color.red(color) + 0.587 * Color.green(color) + 0.114 * Color.blue(color)) / 255;
 
         if (darkness < 0.5) {
@@ -139,8 +124,8 @@ class Utils {
                     changeNavigationIcon(toolbar, ContextCompat.getDrawable(activity, R.drawable.ic_close));
                     changeTitleColor(toolbar, ContextCompat.getColor(context, android.R.color.secondary_text_light));
 
-                    //change fab color
-                    changeFabColor(fab, Color.BLACK);
+                    //change save text color
+                    saveText.setTextColor(Color.BLACK);
                 }
             });
 
@@ -156,8 +141,8 @@ class Utils {
                     changeNavigationIcon(toolbar, ContextCompat.getDrawable(activity, R.drawable.ic_close_dark));
                     changeTitleColor(toolbar, ContextCompat.getColor(context, android.R.color.white));
 
-                    //change fab color
-                    changeFabColor(fab, Color.WHITE);
+                    //change save text color
+                    saveText.setTextColor(Color.WHITE);
                 }
             });
         }

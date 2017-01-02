@@ -11,8 +11,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +23,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.enrico.colorpicker.colorDialog;
 
@@ -57,8 +56,9 @@ public class MainActivity extends AppCompatActivity implements colorDialog.Color
     //toolbar
     Toolbar toolbar;
 
-    //floating action button
-    FloatingActionButton fab;
+    //save button things
+    View saveButton;
+    TextView saveText;
 
     //create the toolbar's menu
     @Override
@@ -117,10 +117,12 @@ public class MainActivity extends AppCompatActivity implements colorDialog.Color
                 });
 
         //fab button
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        saveButton = findViewById(R.id.buttonsave);
+
+        saveText = (TextView) findViewById(R.id.textsave);
 
         //on click retrieve the color and save as png
-        fab.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -261,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements colorDialog.Color
         fo.write(bytes.toByteArray());
         fo.close();
 
-        Snackbar.make(view, color + getString(R.string.saved), Snackbar.LENGTH_LONG)
+        Toast.makeText(getBaseContext(), color + getString(R.string.saved), Toast.LENGTH_LONG)
                 .show();
 
         //refresh media store database
@@ -284,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements colorDialog.Color
 
         Utils.applyTextColor(DynamicText, Hint, colorDialog.getPickerColor(MainActivity.this, 1));
 
-        Utils.isColorDark(toolbar, fab, this, getBaseContext(), colorDialog.getPickerColor(MainActivity.this, 1));
+        Utils.isColorDark(toolbar, saveText, this, getBaseContext(), colorDialog.getPickerColor(MainActivity.this, 1));
     }
 
     //do shit on color selected
