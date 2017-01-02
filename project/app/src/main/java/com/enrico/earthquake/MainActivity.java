@@ -222,7 +222,6 @@ public class MainActivity extends AppCompatActivity implements colorDialog.Color
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     getWindow().setStatusBarColor(colorDialog.shiftColor(color, 0.9f));
-                    getWindow().setNavigationBarColor(color);
                     getWindow().setBackgroundDrawable(new ColorDrawable(color));
                 }
             }
