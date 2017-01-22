@@ -8,11 +8,6 @@
     <string name="colors">Colori</string>
     <string name="color_palette">Palette colori</string>
     <string name="dismiss">Perfetto!</string>
-    <string name="about_body"><![CDATA[
-        simply solid, una app progettata da <b>Enrico D\'Ortenzio</b>.<br/>
-        <a href=\'https://plus.google.com/u/0/+EnricoDortenzio/posts\'>Google+</a>&nbsp;&nbsp;
-        <a href=\'https://github.com/enricocid\'>GitHub</a>
-        ]]></string>
     <string name="savetext">ESPORTA IMMAGINE</string>
     <string name="saved">&#160;salvato con successo!</string>
     <string name="hint">tocca per cambiare il colore :)</string>

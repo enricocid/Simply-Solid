@@ -7,11 +7,6 @@
     <string name="colors">色</string>
     <string name="color_palette">カラーパレット</string>
     <string name="dismiss">完了しました!</string>
-    <string name="about_body"><![CDATA[
-        Simply Solid は <b>Enrico D\'Ortenzio</b> がデザインしたアプリです。<br/>
-        <a href=\'https://plus.google.com/u/0/+EnricoDortenzio/posts\'>Google+</a>&nbsp;&nbsp;
-        <a href=\'https://github.com/enricocid\'>GitHub</a>
-        ]]></string>
     <string name="savetext">画像のエクスポート</string>
     <string name="saved">&#160;保存しました!</string>
     <string name="hint">タッチして色を変更します :)</string>

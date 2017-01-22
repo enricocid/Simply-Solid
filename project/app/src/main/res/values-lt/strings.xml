@@ -7,9 +7,4 @@
     <string name="colors">Spalvos</string>
     <string name="color_palette">Spalvų paletė</string>
     <string name="dismiss">Nuostabu!</string>
-    <string name="about_body"><![CDATA[
-        simply solid, programėlė sukurta <b>Enrico D\'Ortenzio</b>.<br/>
-        <a href=\'https://plus.google.com/u/0/+EnricoDortenzio/posts\'>Google+</a>&nbsp;&nbsp;
-        <a href=\'https://github.com/enricocid\'>GitHub</a>
-        ]]></string>
 </resources>
