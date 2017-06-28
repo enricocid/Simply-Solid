@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="wallpaper_type_list">
+                <item>@string/wallpaper_type_both</item>
+                <item>@string/wallpaper_type_system</item>
+                <item>@string/wallpaper_type_lock</item>
+            </string-array>
+</resources>

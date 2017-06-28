@@ -3,11 +3,13 @@ package com.enrico.earthquake;
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
@@ -19,25 +21,60 @@ import java.io.IOException;
 class Utils {
 
     //set the solid color
-    static void setWallpaper(Activity activity, WallpaperManager myWallpaperManager, int color) {
+    static void setWallpaper(final Activity activity, final WallpaperManager myWallpaperManager, int color) {
 
         try {
 
-            myWallpaperManager.clear();
+            //create a bitmap
             Bitmap.Config conf = Bitmap.Config.ARGB_8888;
 
-            Bitmap bmp = Bitmap.createBitmap(1, 1, conf);
+            final Bitmap bmp = Bitmap.createBitmap(1, 1, conf);
 
             bmp.eraseColor(color);
 
-            myWallpaperManager.setBitmap(bmp);
+            //enhance the wallpaper activity to ask what wallpaper to set for android version >=Nougat
+            //credits goes to Omni rom: https://github.com/omnirom/android_packages_apps_Gallery2/commit/8fe8f24c051641b8c12f1e63282847220a851a61
+            if (android.os.Build.VERSION.SDK_INT >= 24) {
+
+                final int DEFAULT_WALLPAPER_TYPE = WallpaperManager.FLAG_SYSTEM | WallpaperManager.FLAG_LOCK;
+
+                AlertDialog.Builder wallpaperTypeDialog = new AlertDialog.Builder(activity);
+                wallpaperTypeDialog.setTitle(activity.getResources().getString(R.string.wallpaper_type_dialog_title));
+                wallpaperTypeDialog.setItems(R.array.wallpaper_type_list, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        int wallpaperType = DEFAULT_WALLPAPER_TYPE;
+
+                        if (item == 1) {
+                            wallpaperType = WallpaperManager.FLAG_SYSTEM;
+                        } else if (item == 2) {
+                            wallpaperType = WallpaperManager.FLAG_LOCK;
+                        }
+
+                        try {
+                            myWallpaperManager.setBitmap(bmp, null, true, wallpaperType);
+                            activity.recreate();
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                AlertDialog d = wallpaperTypeDialog.create();
+                d.show();
+
+            } else {
+
+                myWallpaperManager.clear();
+                myWallpaperManager.setBitmap(bmp);
+                activity.recreate();
+
+            }
 
         } catch (IOException e) {
 
             e.printStackTrace();
         }
-
-        activity.recreate();
 
     }
 

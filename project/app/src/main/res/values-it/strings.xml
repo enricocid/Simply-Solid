@@ -16,4 +16,8 @@
     <string name="libs">Librerie</string>
     <string name="application_info">Info applicazione</string>
     <string name="version">Versione</string>
+    <string name="wallpaper_type_dialog_title">Imposta sfondo</string>
+    <string name="wallpaper_type_both">Home screen e lock screen</string>
+    <string name="wallpaper_type_system">Home screen</string>
+    <string name="wallpaper_type_lock">Lock screen</string>
 </resources>
