@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- strings -->
+
+<resources>
+    <string name="app_name">Simply Solid</string>
+    <string name="colors">Couleurs</string>
+    <string name="color_palette">Palette de Couleurs</string>
+    <string name="dismiss">Parfait !</string>
+    <string name="savetext">EXPORTER L\'IMAGE</string>
+    <string name="saved">&#160;saved successfully !</string>
+    <string name="hint">touchez pour changer la couleur :)</string>
+
+    <!-- About things -->
+    <string name="dev_infos">Infos sur le développeur</string>
+    <string name="credits">Crédits</string>
+    <string name="libs">Bibliothèques</string>
+    <string name="application_info">Infos sur l\'Application</string>
+    <string name="version">Version</string>
+
+    <string name="wallpaper_type_dialog_title">Définir le fond d\'écran</string>
+    <string name="wallpaper_type_both">Écran d\'accueil et écran de verrouillage</string>
+    <string name="wallpaper_type_system">Écran d\'accueil</string>
+    <string name="wallpaper_type_lock">Écran de verrouillage</string>
+</resources>

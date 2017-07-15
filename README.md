@@ -1,5 +1,7 @@
--# Simply-Solid
- -Simple app to apply solid wallpapers
+Simply-Solid
+===========
+
+Simple app to apply solid wallpapers
 
 
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/solid2.png)![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/round.png)
