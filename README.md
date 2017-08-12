@@ -21,7 +21,7 @@ The app supports 4.1+ devices.
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/Simply-Solid/master/art/screens4.png)
 
 
-You can download the latest (3.0.5) signed APK from this repo here: https://github.com/enricocid/Simply-Solid/raw/master/project/app/app-release.apk
+You can download the latest (3.0.6) signed APK from this repo here: https://github.com/enricocid/Simply-Solid/raw/master/project/app/app-release.apk
 
 
 The app is available on:
@@ -64,6 +64,12 @@ https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129
 
 Git page:
 https://github.com/techwebpd
+
+**- Poussinou for French translation**
+@Possinou
+
+Git page:
+https://github.com/Poussinou
 
 
 -------------------

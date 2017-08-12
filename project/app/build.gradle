@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     lintOptions {
         checkReleaseBuilds true
@@ -12,9 +12,9 @@ android {
     defaultConfig {
         applicationId "com.enrico.earthquake"
         minSdkVersion 16
-        targetSdkVersion 25
-        versionCode 15
-        versionName "3.0.5"
+        targetSdkVersion 26
+        versionCode 16
+        versionName "3.0.6"
     }
 
     buildTypes {
@@ -28,11 +28,13 @@ android {
 }
 
 repositories {
-    maven { url "https://jitpack.io" }
+    maven { url "https://jitpack.io"
+    }
+    maven { url "https://maven.google.com"
+    }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:appcompat-v7:26.0.0'
     compile 'com.github.enricocid:cpl:1.0.3'
 }
-1
